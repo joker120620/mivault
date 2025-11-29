@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Iniciar Sesión</title>
+
+</head>
+
+<body>
+
+    <section class="card-container">
+        <div class="image-svg-slice">
+            <h2>Comienza tu experiencia en la nube</h2>
+            <p>
+                Si aún no tienes una cuenta, únete
+                y mantén todos tus archivos seguros, sincronizados y siempre accesibles.
+            </p>
+            <button class="btn-container-image-login">Registrarse</button>
+        
+        </div>
+        <div class="card-login">
+            <h2 class="h2-login">Bienvenido</h2>
+
+            <form>
+                <div class="input-group">
+                    <label for="user" class="label-login">Usuario</label>
+                    <input type="text" id="user" name="user" required class="input-login" />
+                </div>
+
+                <div class="input-group">
+                    <label for="pass" class="label-login">Contraseña</label>
+                    <input type="password" id="pass" name="pass" required class="input-login" />
+                </div>
+
+                <button class="btn" type="submit">Ingresar</button>
+
+                <div class="footer">
+                    ¿No tienes cuenta? <a href="#">Crear una</a>
+                </div>
+            </form>
+
+        </div>
+        <div class="card-register">
+            <h2 class="h2-login">Regístrate</h2>
+
+            <form>
+                <div class="input-group">
+                    <label for="new-user" class="label-login">Usuario</label>
+                    <input type="text" id="new-user" name="new-user" required class="input-login" />
+                </div>
+
+                <div class="input-group">
+                    <label for="new-pass" class="label-login">Contraseña</label>
+                    <input type="password" id="new-pass" name="new-pass" required class="input-login" />
+                </div>
+
+                <button class="btn" type="submit">Registrar</button>
+
+                <div class="footer">
+                    ¿Ya tienes cuenta? <a href="#">Iniciar sesión</a>
+                </div>
+            </form>
+        </div>
+
+    </section>
+
+</body>
+
+</html>

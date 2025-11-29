@@ -1,0 +1,29 @@
+# Dependencias
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Compilados / build
+dist/
+build/
+
+# Configuración opcional
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Cache
+.cache/
+.npm/
+.pnpm-store/
