@@ -75,6 +75,15 @@ body {
     background: url("./sources/backagroundLogin.png") no-repeat center center;
     width: 45%;
     height: 92%;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.image-svg-slice-right{
+transform: translateX(-100%);
+transition: transform 0.6s ease-in-out;
 }
 .image-svg-slice p{
     color: var(--blanco); 
@@ -101,11 +110,12 @@ body {
     font-weight: 600;
     transition: 0.25s;
     margin-top: 10px;
+    
 }
-.btn-container-image-login:hover {
+.btn-container-image-login :hover {
+    width: 100%;
     background: var(--blanco);
     color:  var(--morado-oscuro);
-    cursor: pointer;
 }
 
 .h2-login {
@@ -156,6 +166,9 @@ body {
     cursor: pointer;
     transition: 0.25s;
     margin-top: 10px;
+}
+.btn:active {
+    transform: scale(0.98);
 }
 
 .btn:hover {
