@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styleDashboard.css">
+    <title>MyVault</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1>MyVault</h1>
+
+            <div class="container-nav">
+                <div class="container-busqueda">
+                    <input class="input-busqueda" type="search" name="" id="inputSearch"
+                        placeholder="Buscar en MyVault...">
+
+                </div>
+                <div class="container-info-user-nav">
+                    <p class="info-user-nav">
+                        <img src="./userDefault.png" alt="mi perfil">
+                    <p class="info-user-nav"><span>Juan David</span><br> <span>davidtoloza1234@hotmail.com</span></p>
+                    </p>
+                    <button class="btn-perfil-nav"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                            viewBox="0 -960 960 960" width="24px" fill="#4c1d95">
+                            <path
+                                d="m370-80-16-128q-13-5-24.5-12T307-235l-119 50L78-375l103-78q-1-7-1-13.5v-27q0-6.5 1-13.5L78-585l110-190 119 50q11-8 23-15t24-12l16-128h220l16 128q13 5 24.5 12t22.5 15l119-50 110 190-103 78q1 7 1 13.5v27q0 6.5-2 13.5l103 78-110 190-118-50q-11 8-23 15t-24 12L590-80H370Zm70-80h79l14-106q31-8 57.5-23.5T639-327l99 41 39-68-86-65q5-14 7-29.5t2-31.5q0-16-2-31.5t-7-29.5l86-65-39-68-99 42q-22-23-48.5-38.5T533-694l-13-106h-79l-14 106q-31 8-57.5 23.5T321-633l-99-41-39 68 86 64q-5 15-7 30t-2 32q0 16 2 31t7 30l-86 65 39 68 99-42q22 23 48.5 38.5T427-266l13 106Zm42-180q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Zm-2-140Z" />
+                        </svg></button>
+                    <li class="btn-perfil-nav"><a href="../index.html"><svg xmlns="http://www.w3.org/2000/svg"
+                                height="24px" viewBox="0 -960 960 960" width="24px" fill="#4c1d95">
+                                <path
+                                    d="M200-120q-33 0-56.5-23.5T120-200v-160h80v160h560v-560H200v160h-80v-160q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm220-160-56-58 102-102H120v-80h346L364-622l56-58 200 200-200 200Z" />
+                            </svg></a></li>
+
+                </div>
+
+
+            </div>
+
+        </nav>
+    </header>
+    <main>
+        <section class="container-menu-options">
+            <ul class="menu-options-navegation">
+                <li id="btnHomeDashboard"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                        width="24px" fill="#4c1d95">
+                        <path
+                            d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
+                    </svg>Home</li>
+                <li id="btnFotosDashboard"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#4c1d95">
+                        <path
+                            d="M360-400h400L622-580l-92 120-62-80-108 140Zm-40 160q-33 0-56.5-23.5T240-320v-480q0-33 23.5-56.5T320-880h480q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H320Zm0-80h480v-480H320v480ZM160-80q-33 0-56.5-23.5T80-160v-560h80v560h560v80H160Zm160-720v480-480Z" />
+                    </svg>Fotos</li>
+                <li id="btnVideosDashboard"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#4c1d95">
+                        <path
+                            d="M200-320h400L462-500l-92 120-62-80-108 140Zm-40 160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h480q33 0 56.5 23.5T720-720v180l160-160v440L720-420v180q0 33-23.5 56.5T640-160H160Zm0-80h480v-480H160v480Zm0 0v-480 480Z" />
+                    </svg>Videos</li>
+                <li><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#4c1d95">
+                        <path
+                            d="M320-440h320v-80H320v80Zm0 120h320v-80H320v80Zm0 120h200v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z" />
+                    </svg>Documentos</li>
+                <li><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#4c1d95">
+                        <path
+                            d="M440-280h320v-22q0-45-44-71.5T600-400q-72 0-116 26.5T440-302v22Zm160-160q33 0 56.5-23.5T680-520q0-33-23.5-56.5T600-600q-33 0-56.5 23.5T520-520q0 33 23.5 56.5T600-440ZM160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Zm0-80h640v-400H447l-80-80H160v480Zm0 0v-480 480Z" />
+                    </svg>Compartidos</li>
+                <li><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#4c1d95">
+                        <path
+                            d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z" />
+                    </svg>Favoritos</li>
+                <li><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#4c1d95">
+                        <path
+                            d="M600-240v-80h160v80H600Zm0-320v-80h280v80H600Zm0 160v-80h240v80H600ZM120-640H80v-80h160v-60h160v60h160v80h-40v360q0 33-23.5 56.5T440-200H200q-33 0-56.5-23.5T120-280v-360Zm80 0v360h240v-360H200Zm0 0v360-360Z" />
+                    </svg>Papelera</li>
+            </ul>
+
+        </section>
+        <section class="container-content-dashboard" id="sectionHomeDashboard">
+            <div class="header-dashboard-files">
+                <h2>Descubrir</h2>
+                <p>Descubre los archivos que comparten las personas con el mundo</p>
+            </div>
+            <div class="content-home" id="contentHome">
+               
+            </div>
+        </section>
+        <section class="container-content-dashboard" id="sectionFotosDashboard">
+            <div class="header-fotos-dashboard">
+                <h2>Mis Fotos</h2>
+                <p>Administra tus fotos almacenadas en MyVault</p>
+                <div class="container-btn-subir-file">
+                    <button class="btn-subir">Subir Foto <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                            viewBox="0 -960 960 960" width="24px" fill="#ffff">
+                            <path
+                                d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" />
+                        </svg></button>
+                    <div>
+                        <button class="btn-cancel-delete" id="btnCancelDelete">Cancelar</button>
+                        <button class="btn-delete-file" id="btnEliminarFoto"><svg xmlns="http://www.w3.org/2000/svg"
+                                height="24px" viewBox="0 -960 960 960" width="24px" fill="#BB271A">
+                                <path
+                                    d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
+                            </svg></button>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="content-Fotos-dashboard" id="content-Fotos-dashboard">
+                <div class="card-file-dashboard">
+                    <input disabled type="checkbox" class="checkbox-delete-file" id="01">
+                    <img src="https://th.bing.com/th/id/R.f72adb2f6bfbd298a909115d687467dc?rik=VJeMZxLn3VIvNA&riu=http%3a%2f%2f4.bp.blogspot.com%2f-MHHo9-USLVg%2fVUzwVljuhyI%2fAAAAAAAAAeE%2fCFX8DMUX004%2fs1600%2fMonte.jpg&ehk=OklMfnYTwQ7uyNrfbpi8UniBqcOxpDfOkibb%2bEGYc1o%3d&risl=&pid=ImgRaw&r=0"
+                        alt="imagen de archivo">
+                    <p class="title-file-dashboard">Paisaje Montañoso</p>
+                    <p class="info-file-dashboard">Visibilidad: privado</p>
+                </div>
+                <div class="card-file-dashboard">
+                    <input type="checkbox" class="checkbox-delete-file" id="02">
+
+                    <img src="https://tse2.mm.bing.net/th/id/OIP.3rBCT_frsc1acaebMvhheAHaFK?rs=1&pid=ImgDetMain&o=7&rm=3"
+                        alt="imagen de archivo">
+                    <p class="title-file-dashboard">Costa</p>
+                    <p class="info-file-dashboard">Visibilidad: publico</p>
+                </div>
+                <div class="card-file-dashboard">
+                    <input type="checkbox" class="checkbox-delete-file" id="03">
+                    <img src="https://tse2.mm.bing.net/th/id/OIP.Z9y-rWzpTOIf0TSkeYKa_QHaEK?rs=1&pid=ImgDetMain&o=7&rm=3"
+                        alt="imagen de archivo">
+                    <p class="title-file-dashboard">Paisaje decierto</p>
+                    <p class="info-file-dashboard">Visibilidad: publico</p>
+                </div>
+                <div class="card-file-dashboard">
+                    <input type="checkbox" class="checkbox-delete-file" id="04">
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.r8S1DCb9kYURmDKFeOIwIwHaEo?rs=1&pid=ImgDetMain&o=7&rm=3"
+                        alt="imagen de archivo">
+                    <p class="title-file-dashboard">Paisaje nevado</p>
+                    <p class="info-file-dashboard">Visibilidad: publico</p>
+                </div>
+                <div class="card-file-dashboard">
+                    <input type="checkbox" class="checkbox-delete-file" id="05">
+                    <img src="https://th.bing.com/th/id/R.aed97638cb4928c5daaf80527ab3a90d?rik=EAYR9AcHCpl%2fJg&pid=ImgRaw&r=0"
+                        alt="imagen de archivo">
+                    <p class="title-file-dashboard">Paisaje selva</p>
+                    <p class="info-file-dashboard">Visibilidad: Privado</p>
+                </div>
+                <div class="card-file-dashboard">
+                    <input type="checkbox" class="checkbox-delete-file" id="06">
+                    <img src="https://as1.ftcdn.net/v2/jpg/05/17/20/74/1000_F_517207401_mM6zWjHTjbRWVAJuzPCrOnICbc360DN2.jpg"
+                        alt="imagen de archivo">
+                    <p class="title-file-dashboard">Ciudad</p>
+                    <p class="info-file-dashboard">Visibilidad: publico</p>
+                </div>
+            </div>
+
+        </section>
+        <section class="container-content-dashboard" id="sectionVideosDashboard">
+            <div class="header-fotos-dashboard">
+                <h2>Mis Videos</h2>
+                <p>Administra tus videos almacenados en MyVault</p>
+                <button class="btn-subir">Subir Video <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#ffff">
+                        <path
+                            d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" />
+                    </svg></button>
+
+            </div>
+            <div class="content-Fotos-dashboard">
+                <div class="card-file-dashboard">
+                    <img src="https://tse4.mm.bing.net/th/id/OIP.fq6Yk1b0b1Yk1b0b1Yk1b0HaEK?rs=1&pid=ImgDetMain&o=7&rm=3"
+                        alt="imagen de archivo">
+                    <p class="title-file-dashboard">Video de Paisaje Montañoso</p>
+                    <p class="info-file-dashboard">Duración: 2:30 mins</p>
+                </div>
+                <div class="card-file-dashboard">
+                    <img src="https://tse2.mm.bing.net/th/id/OIP.Lz1X4Yk1b0b1Yk1b0b1Yk1HaEK?rs=1&pid=ImgDetMain&o=7&rm=3"
+                        alt="imagen de archivo">
+                    <p class="title-file-dashboard">Video de Costa</p>
+                    <p class="info-file-dashboard">Duración: 3:15 mins</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer></footer>
+    <div id="modalCard" class="modal">
+        <div class="modal-content" >
+            <span id="modalCardCerrar" class="close">&times;</span>
+            <div id="modalCardContent"></div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content" id="modal-content">
+            <span id="modalCerrar" class="close">&times;</span>
+            <p id="modalTexto"></p>
+        </div>
+    </div>
+    <script defer type="module" src="./scriptDashboard.js"></script>
+
+</body>
+
+</html>
