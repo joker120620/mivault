@@ -1,40 +1,57 @@
+import fs from "fs";
+import path from "path";
+import { db } from "../config/db.js";
+
 export async function uploadPhoto(file, userId) {
     try {
-         const {
-            originalname,
-            mimetype,
-            size,
-            buffer
-        } = file;
+        const uploadsPath = path.join(process.cwd(), "uploads");
+
+        // Crear la carpeta uploads si no existe
+        if (!fs.existsSync(uploadsPath)) {
+            fs.mkdirSync(uploadsPath);
+        }
+
+        // Nuevo nombre único
+        const newFileName = Date.now() + "-" + file.originalname;
+        const filePath = path.join(uploadsPath, newFileName);
+
+        // Guardar archivo físicamente
+        fs.writeFileSync(filePath, file.buffer);
+
+        // Ruta que se guarda en BD 
+        const dbPath = `/uploads/${newFileName}`;
+
+        // Guardar solo la ruta en la base de datos
         const [result] = await db.query(`
             INSERT INTO tbl_images (
                 user_id_image,
                 file_name_image,
                 mime_type_image,
                 file_size_image,
-                data_image,
+                file_path_image,
                 status_image
             ) VALUES (?, ?, ?, ?, ?, ?)
         `, [
             userId,
-            originalname,
-            mimetype,
-            size,
-            buffer,      // binario
+            file.originalname,
+            file.mimetype,
+            file.size,
+            dbPath,
             "private"
         ]);
 
         return {
             ok: true,
-            msg: "Foto subida correctamente",
-            id_image: result.insertId
+            msg: "upload true",
+            id_image: result.insertId,
+            url: dbPath
         };
-        
+
     } catch (error) {
+        console.error(error);
         return {
             ok: false,
-            msg: "Error"
-        }
+            msg: "Error subiendo la foto"
+        };
     }
-   
 }

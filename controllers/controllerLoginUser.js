@@ -26,8 +26,11 @@ export const loginUser = async (email, password) => {
 
     // Crear token temporal
     const token = jwt.sign(
-        { id: usuario.id, email: usuario.email },
-        process.env.JWT_SECRET ,
+        {
+            id_user: usuario.id_user,   // ← AHORA SÍ
+            email_user: usuario.email_user
+        },
+        process.env.JWT_SECRET,
         { expiresIn: "24h" }
     );
     return { token, usuario };

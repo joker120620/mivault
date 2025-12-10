@@ -50,9 +50,47 @@ body {
 }
 
 .close {
-  float: right;
-  font-size: 22px;
-  cursor: pointer;
+    float: right;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.upload-area {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.btn-subir,
+.btn-upload {
+    padding: 10px 20px;
+    background: #6a0dad;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: .3s;
+    width: fit-content;
+}
+
+.btn-subir:hover,
+.btn-upload:hover {
+    background: #8b23e6;
+}
+
+.file-name {
+    font-size: 14px;
+    color: #555;
+    font-style: italic;
+}
+
+.rename-input {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    width: 220px;
 }
 
 @keyframes fadeIn {

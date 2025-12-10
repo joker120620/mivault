@@ -102,6 +102,7 @@ formularionuevoUsuario.addEventListener("submit", function(e) {
     } else {
         mostrarMensaje("¡Registro exitoso! Ahora puedes iniciar sesión con tus credenciales.");
         formularionuevoUsuario.reset();
+        btnChangePositionSvgRegister.click()
     }
 };
    confirmacionRegistro();
@@ -132,6 +133,7 @@ formularioLoginUsuario.addEventListener("submit", function(e) {
             if (savesession) {
                 localStorage.setItem("token", response.token);
             } else {
+                sessionStorage.setItem("token", response.token);
                 localStorage.removeItem("token");
             }
             window.location.href = "./sources/dashboard.html";

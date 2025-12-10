@@ -2,6 +2,7 @@ import express from "express";
 import routes from "./routes/routes.js";
 import dotenv from "dotenv";
 import cors from "cors";
+import path from "path";
 const app = express();
 app.use(cors());
 dotenv.config();
@@ -11,6 +12,7 @@ const HOST = "0.0.0.0";
 
 app.use(express.json());
 app.use(express.static("public"));
+app.use("/uploads", express.static(path.resolve("uploads")));
 
 // Rutas
 app.use("/", routes);

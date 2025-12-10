@@ -1,9 +1,18 @@
 //importacion de modulos
 import { mostrarMensaje } from "./utils/modalTexto.js";
 import { mostrarConfirmacion } from "./utils/modalConfim.js";
+import { UploadFile } from "./utils/modalUploadFile.js"
 import { mostrarCard } from "./utils/modalShowCard.js";
-import { renderHome } from "./renders/renderHome.js";  
+import { renderHome } from "./renders/renderHome.js";
 
+
+//redigirir si no hay session
+const session = localStorage.getItem("token") || sessionStorage.getItem("token");
+
+// Si no hay token → devolver al login
+if (!session) {
+    window.location.href = "/index.html";
+}
 //Funciones auxiliares para el dashboard
 function capturarItem(nombre) {
   return document.querySelector(`#${nombre}, .${nombre}, [name='${nombre}']`);
@@ -50,7 +59,7 @@ renderHome()
 //funcion de subir foto
 const btnSubirFoto = capturarItem("btn-subir");
 btnSubirFoto.addEventListener("click", () => {
-    mostrarMensaje("Funcionalidad de subir foto en desarrollo.");
+    UploadFile("photo")
 });
 
 //funcion de eliminar foto

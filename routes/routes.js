@@ -1,12 +1,15 @@
 import { Router } from "express";
 import path from "path";
 import { fileURLToPath } from "url";
+import multer from "multer";
 import { addNewUser } from "../controllers/controllerRegisterUser.js";
 import { loginUser } from "../controllers/controllerLoginUser.js";
 import { auth } from "../controllers/controllerAuthToken.js";
 import { getFilesPublic } from "../controllers/controllerGetFilesPublic.js"
 import { uploadPhoto } from "../controllers/controllerUploadPhoto.js";
 const router = Router();
+const storage = multer.memoryStorage(); 
+const upload = multer({ storage });
 
 // Necesario para obtener __dirname en ES Modules
 const __filename = fileURLToPath(import.meta.url);
@@ -63,34 +66,38 @@ router.get("/api/perfil", auth, (req, res) => {
 
 //mostrar archivos publicos home
 router.get("/api/files/public", async (req, res) => {
-    let data = getFilesPublic()
+    let data = await getFilesPublic()
+    console.log(data)
     res.json(data)
 });
-//subir fotos // subir fotos
-router.post("/api/files/photo/upload", auth , async (req, res) => {
+//subir fotos
+router.post("/api/files/photo/upload", auth, upload.single("file"), async (req, res) => {
     try {
-        // Usuario del token
+        console.log(req.user.id_user)
         const userId = req.user.id_user;
 
         if (!userId) {
             return res.status(401).json({ ok: false, msg: "Usuario no autorizado" });
         }
 
-        // Verificar archivo
         if (!req.file) {
             return res.status(400).json({ ok: false, msg: "No se envió ninguna imagen" });
         }
 
-        
+        // Esperar la inserción
+        const response = await uploadPhoto(req.file, userId);
 
-        // Guardar en BD
-        const response = uploadPhoto(req.file, userId)
-        if(response.ok){
-            return res.status(200).json({ status:200, msg: "imagen subida" });
-        }else{
-            return res.status(500).json({ status:500, msg: "error al subir" });
+        if (response.ok) {
+            console.log("subida")
+            return res.status(200).json({
+                status: 200,
+                msg: "Imagen subida correctamente",
+                id_image: response.id_image,
+                url: response.url
+            });
+        } else {
+            return res.status(500).json({ status: 500, msg: "Error al subir la imagen" });
         }
-        
 
     } catch (error) {
         console.error(error);
@@ -100,6 +107,6 @@ router.post("/api/files/photo/upload", auth , async (req, res) => {
             error: error.message
         });
     }
-});
-
+}
+);
 export default router;
