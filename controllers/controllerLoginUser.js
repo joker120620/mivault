@@ -19,6 +19,8 @@ export const loginUser = async (email, password) => {
 
     // Comparar contraseña
     const ok = await bcrypt.compare(password, usuario.password_user);
+    
+    console.log(ok)
 
     if (!ok) {
         return { error: "Datos Incorrectos" };
@@ -27,7 +29,7 @@ export const loginUser = async (email, password) => {
     // Crear token temporal
     const token = jwt.sign(
         {
-            id_user: usuario.id_user,   // ← AHORA SÍ
+            id_user: usuario.id_user,  
             email_user: usuario.email_user
         },
         process.env.JWT_SECRET,

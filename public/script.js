@@ -1,5 +1,7 @@
 
 import { fetchData  } from "./sources/utils/peticionServer.js";
+localStorage.removeItem("usuario") || sessionStorage.removeItem("usuario");
+localStorage.removeItem("token") || sessionStorage.removeItem("token") ;
 // funcion capyurar items 
 function capItem(name) {
     let item = document.getElementById(name);
@@ -12,7 +14,7 @@ function animarError(input) {
     input.classList.add("shake-horizontal");
 }
 //definir host api
-const HOST_API = "http://localhost:3000";
+const HOST_API = "http://192.168.0.240:3000";
 const btnChangePositionSvgLogin = document.getElementById("btnChangePositionSvgLogin");
 const btnChangePositionSvgRegister = document.getElementById("btnChangePositionSvgRegister");
 
@@ -132,8 +134,11 @@ formularioLoginUsuario.addEventListener("submit", function(e) {
         } else {
             if (savesession) {
                 localStorage.setItem("token", response.token);
+                localStorage.setItem("usuario", response.usuario);
             } else {
                 sessionStorage.setItem("token", response.token);
+                sessionStorage.setItem("usuario", response.usuario);
+                localStorage.removeItem("usuario");
                 localStorage.removeItem("token");
             }
             window.location.href = "./sources/dashboard.html";

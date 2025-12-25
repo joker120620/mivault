@@ -1,5 +1,6 @@
 import { mostrarMensaje } from "./modalTexto.js";
 import { fetchDataWithToken } from "./peticionServer.js";
+const  URL_API ="http://192.168.0.240:3000"
 
 export function UploadFile(type) {
     const modal = document.getElementById('modalCard');
@@ -84,6 +85,8 @@ export function UploadFile(type) {
         }
 
         const formData = new FormData();
+        // Privacidad
+        formData.append("privacy", privacy.value);
 
         // Cambiar nombre
         if (newFileName.value.trim() !== "") {
@@ -94,17 +97,16 @@ export function UploadFile(type) {
             formData.append("file", file);
         }
 
-        // Privacidad
-        formData.append("privacy", privacy.value);
+        
 
         const response = await fetchDataWithToken(
-            `http://localhost:3000/api/files/${type}/upload`,
+            `${URL_API}/api/files/${type}/upload`,
             "POST",
             formData,
             true
         );
 
         closeModal();
-        mostrarMensaje(response.msg);
+        mostrarMensaje(response.msg || "error");
     });
 }

@@ -4,6 +4,7 @@ import { mostrarConfirmacion } from "./utils/modalConfim.js";
 import { UploadFile } from "./utils/modalUploadFile.js"
 import { mostrarCard } from "./utils/modalShowCard.js";
 import { renderHome } from "./renders/renderHome.js";
+import { renderPhotos } from "./renders/renderSectionPhotos.js"
 
 
 //redigirir si no hay session
@@ -11,7 +12,7 @@ const session = localStorage.getItem("token") || sessionStorage.getItem("token")
 
 // Si no hay token → devolver al login
 if (!session) {
-    window.location.href = "/index.html";
+    window.location.href = "/";
 }
 //Funciones auxiliares para el dashboard
 function capturarItem(nombre) {
@@ -35,11 +36,13 @@ function mostrarSeccion(nombreVer) {
 
 btnHomeDashboard.addEventListener("click", () => {
     mostrarSeccion("sectionHomeDashboard");
+    renderHome()
     console.log("home dashboard");
 });
 
 btnFotosDashboard.addEventListener("click", () => {
     mostrarSeccion("sectionFotosDashboard");
+    renderPhotos()
     console.log("fotos dashboard");
 });
 
@@ -99,7 +102,7 @@ document.addEventListener("click", e => {
   const check = card.querySelector(".checkbox-delete-file");
   console.log("Checkbox asociado:", check);
   if (check.disabled){
-    mostrarCard(check.id);
+    mostrarCard(check.id, check.dataset.type);
   }else{
     check.checked = !check.checked;  //  alterna el checkbox
     return};

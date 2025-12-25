@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { db } from "../config/db.js";
 
-export async function uploadPhoto(file, userId) {
+export async function uploadPhoto(req, userId) {
     try {
         const uploadsPath = path.join(process.cwd(), "uploads");
 
@@ -12,11 +12,11 @@ export async function uploadPhoto(file, userId) {
         }
 
         // Nuevo nombre único
-        const newFileName = Date.now() + "-" + file.originalname;
+        const newFileName = Date.now() + "-" + req.file.originalname;
         const filePath = path.join(uploadsPath, newFileName);
 
         // Guardar archivo físicamente
-        fs.writeFileSync(filePath, file.buffer);
+        fs.writeFileSync(filePath, req.file.buffer);
 
         // Ruta que se guarda en BD 
         const dbPath = `/uploads/${newFileName}`;
@@ -33,11 +33,11 @@ export async function uploadPhoto(file, userId) {
             ) VALUES (?, ?, ?, ?, ?, ?)
         `, [
             userId,
-            file.originalname,
-            file.mimetype,
-            file.size,
+            req.file.originalname,
+            req.file.mimetype,
+            req.file.size,
             dbPath,
-            "private"
+            req.body.privacy
         ]);
 
         return {

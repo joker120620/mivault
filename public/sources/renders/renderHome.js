@@ -1,7 +1,7 @@
 import { fetchData } from "../utils/peticionServer.js";
 
-const BASE_URL = "http://localhost:3000";
-const url_server = "http://localhost:3000/api/files/public";
+const BASE_URL = "http://192.168.0.240:3000";
+const url_server = "http://192.168.0.240:3000/api/files/public";
 
 export async function renderHome() {
 
@@ -27,8 +27,8 @@ export async function renderHome() {
         card.classList.add("card-file-dashboard");
 
         card.innerHTML = `
-            <input disabled type="checkbox" class="checkbox-delete-file" id="${img.id_image}">
-            <img src="${BASE_URL + img.file_path_image}" alt="${img.file_name_image}">
+            <input disabled type="checkbox" class="checkbox-delete-file" id="${img.id_image}" data-type="image">
+            <img src="${BASE_URL + img.file_path_image}" alt="${img.file_name_image}" with="100px" height="100px">
             <p class="title-file-dashboard">${img.file_name_image}</p>
             <p class="info-file-dashboard">Compartido por: Usuario #${img.owner_name}</p>
         `;
