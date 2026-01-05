@@ -7,6 +7,8 @@ export async function renderPhotos() {
 
     const data = await fetchDataWithToken(url_server , "POST");
     const seccionFotos = document.getElementById("content-Fotos-dashboard");
+    seccionFotos.classList.remove("content-Fotos-dashboard-delete");
+    document.getElementById("btnCancelDelete").style.display = "none";
 
     seccionFotos.innerHTML = "";
 

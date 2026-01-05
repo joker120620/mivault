@@ -7,11 +7,6 @@ export function UploadFile(type) {
     const contenido = document.getElementById('modalCardContent');
 
     contenido.innerHTML = `
-
-        <style>
-            
-        </style>
-
         <h2>Subir Archivo</h2>
 
         <div class="upload-area">
@@ -26,8 +21,8 @@ export function UploadFile(type) {
 
             <label class="privacidad-label">Privacidad:</label>
             <select id="privacy" class="privacy-select">
-                <option value="public">Público</option>
                 <option value="private">Privado</option>
+                <option value="public">Público</option>
             </select>
 
             <button id="uploadBtn" class="btn-upload">Confirmar Subida</button>
@@ -108,5 +103,7 @@ export function UploadFile(type) {
 
         closeModal();
         mostrarMensaje(response.msg || "error");
+        document.getElementById("btnHomeDashboard").click();
+        
     });
 }

@@ -40,7 +40,28 @@ btnChangePositionSvgRegister.addEventListener("click", ()=>{
     document.getElementById("svg-slice-container").classList.add("image-svg-slice-left")
     document.getElementById("svg-slice-container").classList.remove("image-svg-slice-right")
 })
-
+//cambiar de seccion para vista mobiles
+const btnChangeSectionRegisterFooter = capItem("btnChangeSectionRegisterFooter");
+btnChangeSectionRegisterFooter.addEventListener("click", ()=>{
+    changeSection('cardRegister');
+});
+const btnChangeSectionLoginFooter = capItem("btnChangeSectionLoginFooter");
+btnChangeSectionLoginFooter.addEventListener("click", ()=>{
+    changeSection('cardLogin');
+});
+function changeSection(sectionId) {
+    const cardLogin = document.getElementById("cardLogin");
+    const cardRegister = document.getElementById("cardRegister");   
+    if (sectionId === 'cardLogin') {
+        cardLogin.style.display = 'block';
+        cardRegister.style.display = 'none';
+        btnChangePositionSvgLogin.click();
+    } else if (sectionId === 'cardRegister') {
+        cardRegister.style.display = 'block';
+        cardLogin.style.display = 'none';
+        btnChangePositionSvgRegister.click();
+    }
+}
 //funcione abrir modal de mensaje
 function mostrarMensaje(mensaje) {
   const modal = document.getElementById('modalMensaje');

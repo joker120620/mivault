@@ -32,6 +32,7 @@ function mostrarSeccion(nombreVer) {
     const seccionVer = capturarItem(nombreVer);
     disableCheckboxes();
     seccionVer.style.display = "block";
+    capturarItem("menu-mobile-dashboard").classList.remove("menu-mobile-dashboard-open");
 }
 
 btnHomeDashboard.addEventListener("click", () => {
@@ -57,8 +58,29 @@ mostrarSeccion("sectionHomeDashboard");
 
 //mostrar media del home
 renderHome()
+const btnOpenMenuMobile = capturarItem("btnOpenMenuMobile");
+const menuMobile = capturarItem("menu-mobile-dashboard");
 
+// Abrir menú mobile
+btnOpenMenuMobile.addEventListener("click", (e) => {
+  e.stopPropagation(); 
+  menuMobile.classList.add("menu-mobile-dashboard-open");
+});
 
+// Evitar que clics dentro del menú lo cierren
+menuMobile.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+// Cerrar al hacer clic fuera del menú
+window.addEventListener("click", (e) => {
+  const clickFueraMenu = !menuMobile.contains(e.target);
+  const clickEnBoton = btnOpenMenuMobile.contains(e.target);
+
+  if (clickFueraMenu && !clickEnBoton) {
+    menuMobile.classList.remove("menu-mobile-dashboard-open");
+  }
+});
 //funcion de subir foto
 const btnSubirFoto = capturarItem("btn-subir");
 btnSubirFoto.addEventListener("click", () => {

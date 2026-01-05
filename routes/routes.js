@@ -9,7 +9,6 @@ import { getFilesPublic } from "../controllers/controllerGetFilesPublic.js";
 import { getFilesId } from "../controllers/controllerGetFileId.js";
 import { getPhotoPrivate } from "../controllers/controllerGetPrivatePhoto.js"
 import { uploadPhoto } from "../controllers/controllerUploadPhoto.js";
-import { type } from "os";
 const router = Router();
 const storage = multer.memoryStorage(); 
 const upload = multer({ storage });
@@ -21,9 +20,6 @@ const __dirname = path.dirname(__filename);
 // Ruta principal: devolver el HTML
 router.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/index.html"));
-});
-router.get("/api/saludo", (req, res) => {
-    res.json({ mensaje: "Hola desde rutas con import/export!" });
 });
 //login 
 router.post("/api/login", async (req, res) => {
@@ -74,17 +70,16 @@ router.get("/api/files/public", async (req, res) => {
 
 //mostrar fotos privadas
 router.post("/api/files/photo", auth , async (req, res) => {
-    console.log(req.id_user)
-    let data = await getPhotoPrivate()
+    console.log("id user:" + req.user.id_user)
+    let data = await getPhotoPrivate(req.user.id_user)
     res.json(data)
 });
-//mostrar archivos publicos home
-router.get("/api/files/getcard/card:id", async (req, res) => {
+//mostrar archivos POR ID Y TIPO
+router.post("/api/files/getcard/card:id", auth , async (req, res) => {
     try {
         const { id } = req.params;
         const { type } = req.query;
-        console.log(type)
-        const data = await getFilesId(id, type);
+        const data = await getFilesId(id, type, req.user.id_user);
         res.json(data);
     } catch (err) {
         res.status(500).json({ error: "Error al obtener archivos públicos" });

@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#6d28d9">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#6d28d9">
     <link rel="stylesheet" href="styles.css" />
     <title>MyVault</title>
     <link rel="shortcut icon" href="./sources/favicon.png" type="image/x-icon">
@@ -54,8 +56,14 @@
                 <button class="btn" type="submit">Ingresar</button>
 
                 <div class="footer">
-                    <a href="#">¿Olvidaste tu contraseña? </a></div>
+                    <a href="/recoveryPassword.html">¿Olvidaste tu contraseña? </a>
+                    
+                </div>
+                
             </form>
+            <div class="footer">
+                    <p>¿Aun no tienes cuenta? <button id="btnChangeSectionRegisterFooter">Registrate</button></p>
+                </div>
 
         </div>
         <div class="card-register" id="cardRegister">
@@ -81,7 +89,14 @@
                     <label for="terms">Acepto los términos y condiciones</label>
                 </div>
                 <button class="btn" type="submit">Registrar</button>
+               
+                
             </form>
+             <div class="footer">
+                    <p>¿Ya tienes cuenta?<button id="btnChangeSectionLoginFooter">Iniciar Sesión</button></p>
+                </div>
+            
+            
         </div>
 
     </section>

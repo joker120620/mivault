@@ -349,7 +349,63 @@ background-position: right center;
     text-decoration: none;
     font-weight: 500;
 }
+.footer p{
+    display: none;
+  }
 
 .footer a:hover {
     text-decoration: underline;
+}
+/* responsive grid */
+/* Tablets ≤ 768px */
+@media (max-width: 768px) {
+  body{
+    font-size: 12px;
+  }
+  .svg-slice-container {
+    display: none;
+  }
+  .card-register{
+    display: none;
+    -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	  animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  }
+  .card-container {
+    width: 90%;
+    max-width: 350px;
+    border: solid 2px var(--morado-claro);
+  }
+  .card-login{
+    display: block;
+    width: 100%;
+    -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  }
+  .footer{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
+  .footer p{
+    display: block;
+    text-decoration: none;
+  }
+  .footer button{
+    background: none;
+    border: none;
+    color: var(--morado);
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .modal-content{
+    width: 200px;
+    top: 600px;
+  }
+  
+  
+}
+
+/* Móviles ≤ 480px */
+@media (max-width: 480px) {
+  
 }
