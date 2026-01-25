@@ -1,7 +1,7 @@
 import { fetchData } from "../utils/peticionServer.js";
 
-const BASE_URL = "http://192.168.0.240:3000";
-const url_server = "http://192.168.0.240:3000/api/files/public";
+const BASE_URL = "http://localhost:3000";
+const url_server = "http://localhost:3000/api/files/public";
 
 export async function renderHome() {
 

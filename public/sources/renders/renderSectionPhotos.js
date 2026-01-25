@@ -1,7 +1,7 @@
 import { fetchDataWithToken } from "../utils/peticionServer.js";
 
-const BASE_URL = "http://192.168.0.240:3000";
-const url_server = "http://192.168.0.240:3000/api/files/photo";
+const BASE_URL = "http://localhost:3000";
+const url_server = "http://localhost:3000/api/files/photo";
 
 export async function renderPhotos() {
 
