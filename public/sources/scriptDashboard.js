@@ -110,7 +110,7 @@ btnVideosDashboard.addEventListener("click", () => {
   console.log("videos dashboard");
 });
 
-btnPapeleraDashboard.addEventListener("click" , ()=>{
+btnPapeleraDashboard.addEventListener("click", () => {
   mostrarSeccion("sectionPapeleraDashboard");
   renderPapelera();
   console.log("papelera")
@@ -159,7 +159,7 @@ btnSubirVideo.addEventListener("click", () => {
 });
 //eliminar media ///////////////////////////////////////////////////////////////////////////////////////
 //funcion de eliminar foto
-function deleteFoto() {
+async function deleteFoto() {
   const seleccionadas = document.querySelectorAll(".checkbox-delete-file:checked");
   if (seleccionadas.length > 0) {
     const arrayDelPhotos = []
@@ -167,32 +167,78 @@ function deleteFoto() {
       const idPhoto = chk.id
       arrayDelPhotos.push(idPhoto)
     });
-    let statusDelete = deleteFilesWithIds(arrayDelPhotos , "photo")
-    if (statusDelete){
-      mostrarMensaje("¡"+seleccionadas.length+" Fotos enviadas a la papelera!")
+    let confirm = await mostrarConfirmacion("¿Esta seguro que desea enviar esas fotos a la papelera?")
+    if(confirm){
+      let statusDelete = deleteFilesWithIds(arrayDelPhotos, "photo")
+    if (statusDelete) {
+      mostrarMensaje("¡" + seleccionadas.length + " Fotos enviados a la papelera!")
       renderPhotos()
-    }else{
+    } else {
       mostrarMensaje("error")
     }
     return;
+
+    }
   }
 
 
 }
+//funcion eliminar videos
+async function deleteVideo() {
+  const seleccionadas = document.querySelectorAll(".checkbox-delete-file:checked");
+  if (seleccionadas.length > 0) {
+    const arrayDelVideos = []
+    seleccionadas.forEach(chk => {
+      const idvideo = chk.id
+      arrayDelVideos.push(idvideo)
+    });
+    let confirm = await mostrarConfirmacion("¿Esta seguro que desea enviar los videos a la papelera?")
+    if(confirm){
+      let statusDelete = deleteFilesWithIds(arrayDelVideos, "video")
+    if (statusDelete) {
+      mostrarMensaje("¡" + seleccionadas.length + " Videos enviados a la papelera!")
+      renderVideos()
+    } else {
+      mostrarMensaje("error")
+    }
+    return;
 
+    }
+    
+  }
+
+
+}
+//click en e botmn de eliminar foto
 document.getElementById("btnEliminarFoto").addEventListener("click", () => {
   //cambiar estilos de content fotos
   const contentFotos = capturarItem("content-Fotos-dashboard");
-  const btnCancelDelete = capturarItem("btnCancelDelete");
+  const btnCancelDeleteFoto = capturarItem("btnCancelDeleteFoto");
   const checkboxes = document.querySelectorAll(".checkbox-delete-file");
   checkboxes.forEach(chk => {
     chk.style.display = "inline-block";
     chk.disabled = false;
   });
   contentFotos.classList.add("content-Fotos-dashboard-delete");
-  btnCancelDelete.style.display = "inline-block";
+  btnCancelDeleteFoto.style.display = "inline-block";
   // Busca todos los seleccionados
   deleteFoto();
+});
+//click en el btn de eliminar video
+document.getElementById("btnEliminarVideo").addEventListener("click", () => {
+  //cambiar estilos de content fotos
+  const contentVideo = capturarItem("content-videos-dashboard");
+  const btnCancelDeleteVideo = capturarItem("btnCancelDeleteVideo");
+  const checkboxes = document.querySelectorAll(".checkbox-delete-file");
+  checkboxes.forEach(chk => {
+    chk.style.display = "inline-block";
+    chk.disabled = false;
+  });
+  contentVideo.classList.add("content-videos-dashboard-delete");
+  btnCancelDeleteVideo.style.display = "inline-block";
+  // Busca todos los seleccionados
+  deleteVideo();
+  
 });
 ///seleccionar card a eliminar 
 document.addEventListener("click", e => {
@@ -201,13 +247,13 @@ document.addEventListener("click", e => {
   const check = card.querySelector(".checkbox-delete-file");
   console.log("Checkbox asociado:", check);
   if (check.disabled) {
-    if (check.dataset.type == "image"){
-    capturarItem("loaderImage"+check.id).style.display="inline-block"
-    }else if(check.dataset.type =="video"){
-    capturarItem("loaderVideo"+check.id).style.display="inline-block"
-    
+    if (check.dataset.type == "image") {
+      capturarItem("loaderImage" + check.id).style.display = "inline-block"
+    } else if (check.dataset.type == "video") {
+      capturarItem("loaderVideo" + check.id).style.display = "inline-block"
+
     }
-    
+
     mostrarCard(check.id, check.dataset.type);
   } else {
     check.checked = !check.checked;  //  alterna el checkbox
@@ -227,14 +273,25 @@ function disableCheckboxes() {
   });
 
 }
-document.getElementById("btnCancelDelete").addEventListener("click", async () => {
+//cancelar la eliminacion desde btn fotos
+document.getElementById("btnCancelDeleteFoto").addEventListener("click", async () => {
   const contentFotos = capturarItem("content-Fotos-dashboard");
-  const btnCancelDelete = capturarItem("btnCancelDelete");
+  const btnCancelDeleteFoto = capturarItem("btnCancelDeleteFoto");
   disableCheckboxes();
   contentFotos.classList.remove("content-Fotos-dashboard-delete");
-  btnCancelDelete.style.display = "none";
-  let f = await mostrarConfirmacion("¿Desea cancelar la eliminación de fotos?");
-  console.log("Confirmación de cancelación:", f);
+  btnCancelDeleteFoto.style.display = "none";
+
+});
+document.addEventListener("contextmenu", function (e) {
+  e.preventDefault();
+});
+//cancelar la eliminacion desde btn videos
+document.getElementById("btnCancelDeleteVideo").addEventListener("click", async () => {
+  const contentVideo = capturarItem("content-videos-dashboard");
+  const btnCancelDeleteVideo = capturarItem("btnCancelDeleteVideo");
+  disableCheckboxes();
+  contentVideo.classList.remove("content-Video-dashboard-delete");
+  btnCancelDeleteVideo.style.display = "none";
 
 });
 document.addEventListener("contextmenu", function (e) {

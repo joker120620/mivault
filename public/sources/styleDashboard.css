@@ -701,6 +701,18 @@ main {
     height: fit-content;
     border: solid 2px rgb(219, 171, 171);
 }
+.card-file-empty{
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+
+    }
+    .card-file-empty img{
+        width: 150px;
+        margin-left:43%;
+
+    }
 
 /* estilos de seccion fotos */
 .header-fotos-dashboard {
@@ -717,7 +729,8 @@ main {
 
 }
 
-.content-Fotos-dashboard-delete {
+.content-Fotos-dashboard-delete,.content-Videos-dashboard-delete  {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
@@ -896,12 +909,13 @@ main {
         width: 150px;
         margin: 0;
     }
+    .card-file-empty{
+        justify-content: center;
+
+    }
 
     .card-file-dashboard img,
     .card-file-empty img {
-        width: 100%;
-        /* CORREGIDO: Mejor que ocupe el 100% de la tarjeta de 150px */
-        max-width: 120px;
         /* Mantiene tu límite original */
         border-radius: 8px;
         margin-bottom: 10px;
@@ -1073,8 +1087,7 @@ main {
 
     .card-file-dashboard img,
     .card-file-empty img {
-        width: 100%;
-        max-width: 120px;
+        margin: 0 30%;
         border-radius: 8px;
         margin-bottom: 10px;
         object-fit: cover;

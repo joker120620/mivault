@@ -13,15 +13,16 @@ export async function renderPhotos() {
     console.log("---------------------")
 
     if (!data || !data.images.length) {
-
+        seccionFotos.style.display="flex";
         seccionFotos.innerHTML = `
             <div class="card-file-empty">
-                <img src="https://cdn-icons-png.flaticon.com/512/5445/5445197.png" alt="imagen de archivo">
+                <img src="https://cdn-icons-png.flaticon.com/512/5445/5445197.png" alt="imagen de archivo" with="150px" height="150px"> 
                 <p class="title-file-dashboard">No hay Nada</p>
             </div>
         `;
         return;
     }
+     seccionFotos.style.display="grid";
 
     data.images.forEach(img => {
         let stateImage = img.status_image
