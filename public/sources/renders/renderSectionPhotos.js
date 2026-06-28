@@ -5,6 +5,7 @@ const url_server = "https://mivault.tailff2832.ts.net/api/files/photo";
 
 export async function renderPhotos() {
     const seccionFotos = document.getElementById("content-Fotos-dashboard");
+    seccionFotos.innerHTML = "";
 
     const data = await fetchDataWithToken(url_server, "POST");
     console.log("---------------------")
@@ -36,7 +37,7 @@ export async function renderPhotos() {
         card.innerHTML = `
             <span class="loader"  id="${"loaderImage"+img.id_image}" style="display: none;"></span>
             <input disabled type="checkbox" class="checkbox-delete-file" id="${img.id_image}" data-type="image">
-            <img src="${BASE_URL + img.file_path_image}" alt="${img.file_name_image}" with="100px" height="100px">
+            <img src="${BASE_URL + img.file_path_thumbnail}" alt="${img.file_name_image}" with="100px" height="100px">
             
                 <p>${stateImage}<p>
                 <p class="title-file-dashboard">${img.file_name_image}</p>

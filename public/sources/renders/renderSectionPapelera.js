@@ -32,7 +32,7 @@ export async function renderPapelera() {
             card.innerHTML = `
                 <span class="loader"  id="${"loaderImage"+img.id_image}" style="display: none;"></span>
                 <input disabled type="checkbox" class="checkbox-delete-file" id="${img.id_image}" data-type="image">
-                <img src="${BASE_URL + img.file_path_image}" alt="${img.file_name_image}" loading="lazy">
+                <img src="${BASE_URL + img.file_path_thumbnail}" alt="${img.file_name_image}" loading="lazy">
                 <p class="title-file-dashboard">${img.file_name_image}</p>
                 <p class="info-file-dashboard">Compartido por: ${img.owner_name}</p>
                 <p class="date-file-dashboard">${new Date(img.created_at_image).toLocaleString()}.</p>
@@ -43,7 +43,7 @@ export async function renderPapelera() {
         //crear separador
         const tarjetSpaceFromMedias = document.createElement("div");
         tarjetSpaceFromMedias.classList.add("separate-seccion-home");
-        tarjetSpaceFromMedias.innerHTML = "<h2>Videos publicos<h2>"
+        tarjetSpaceFromMedias.innerHTML = "<h2>Videos Eliminados<h2>"
         await seccionTrash.appendChild(tarjetSpaceFromMedias);
 
 
@@ -56,15 +56,9 @@ export async function renderPapelera() {
                 <span class="loader"  id="${"loaderVideo"+video.id_video}" style="display: none;">hpls</span>
                 <input disabled type="checkbox" class="checkbox-delete-file" id="${video.id_video}" data-type="video">
                 <div class="container-video-modal">
-                    <video 
-                        src="${BASE_URL + video.file_path_video}"
-                        controlsList="nodownload noplaybackrate"
-                        disablePictureInPicture
-                        preload="metadata"
-                        oncontextmenu="return false;"
-                        
+                    <img 
+                        src="${BASE_URL + video.thumbnail_path_video}" alt="${video.file_name_video}"
                     >
-                    </video>
                 </div>
                 <p class="title-file-dashboard">${video.file_name_video}</p>
                 <p class="info-file-dashboard">Comparido por: ${video.owner_name}.</p>

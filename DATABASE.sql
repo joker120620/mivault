@@ -44,6 +44,7 @@ CREATE TABLE `tbl_images` (
   `mime_type_image` varchar(100) NOT NULL,
   `file_size_image` bigint(20) NOT NULL,
   `file_path_image` varchar(500) NOT NULL,
+  `file_path_thumbnail` varchar(500) NOT NULL,
   `data_image` longblob DEFAULT NULL,
   `status_image` enum('public','private','deleted') DEFAULT 'private',
   `created_at_image` datetime DEFAULT current_timestamp(),

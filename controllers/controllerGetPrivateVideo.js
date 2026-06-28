@@ -9,7 +9,7 @@ export async function getVideoPrivate(id) {
                    u.email_user AS owner_email
             FROM tbl_videos i
             JOIN tbl_users u ON i.user_id_video = u.id_user
-            WHERE  i.user_id_video = ?
+            WHERE  i.user_id_video = ? AND i.status_video != "deleted" 
             ORDER BY i.created_at_video DESC
             LIMIT 100
         `, [id]);
