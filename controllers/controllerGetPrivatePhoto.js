@@ -5,11 +5,12 @@ export async function getPhotoPrivate(id) {
         // 
         const [images] = await db.query(`
             SELECT i.*, 
-                   u.name_user AS owner_name,
-                   u.email_user AS owner_email
+            u.name_user AS owner_name,
+            u.email_user AS owner_email
             FROM tbl_images i
             JOIN tbl_users u ON i.user_id_image = u.id_user
-            WHERE i.status_image = 'private' AND i.user_id_image = ?
+            WHERE i.user_id_image = ? 
+            AND i.status_image IN ('public', 'private')
             ORDER BY i.created_at_image DESC
             LIMIT 100
         `, [id]);

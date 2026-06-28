@@ -1,17 +1,27 @@
 import { mostrarMensaje } from "./modalTexto.js";
 import { fetchDataWithToken } from "./peticionServer.js";
-const  URL_API ="http://localhost:3000"
+const URL_API = "https://mivault.tailff2832.ts.net"
 
 export function UploadFile(type) {
     const modal = document.getElementById('modalCard');
     const contenido = document.getElementById('modalCardContent');
+    let typeMedia = "photo"
+    if (type == "photo") {
+        typeMedia = "image/*"
+
+    } else if (type == "video") {
+        typeMedia = "video/*"
+
+    } else if (type == "doc") {
+        typMedia = "application/pdf"
+    }
 
     contenido.innerHTML = `
         <h2>Subir Archivo</h2>
 
         <div class="upload-area">
 
-            <input type="file" id="file" hidden>
+            <input type="file" id="file" hidden accept="${typeMedia}">
 
             <button id="selectFileBtn" class="btn-subir">Seleccionar Archivo</button>
 
@@ -74,10 +84,27 @@ export function UploadFile(type) {
     uploadBtn.addEventListener("click", async () => {
         const file = fileInput.files[0];
 
+
+
         if (!file) {
             mostrarMensaje("Por favor selecciona un archivo");
             return;
         }
+        function detectTypeFile(file) {
+            if (!file || !file.type) return "document";
+
+            if (file.type.startsWith("image/")) {
+                return "photo";
+            }
+
+            if (file.type.startsWith("video/")) {
+                return "video";
+            }
+
+            return "document";
+        }
+        const typeFile = detectTypeFile(file)
+        console.log("Tipo de archivo detectado:", typeFile);
 
         const formData = new FormData();
         // Privacidad
@@ -91,8 +118,10 @@ export function UploadFile(type) {
         } else {
             formData.append("file", file);
         }
-
-        
+        if (typeFile !== type) {
+            mostrarMensaje(`Tipo de archivo incorrecto.`);
+            return;
+        }
 
         const response = await fetchDataWithToken(
             `${URL_API}/api/files/${type}/upload`,
@@ -104,6 +133,6 @@ export function UploadFile(type) {
         closeModal();
         mostrarMensaje(response.msg || "error");
         document.getElementById("btnHomeDashboard").click();
-        
+
     });
 }

@@ -52,7 +52,6 @@ export async function fetchDataWithToken(apiUrl, metodo = "GET", datosEnviar = n
         if (!respuesta.ok) {
             throw new Error(`Error HTTP: ${respuesta.status}`);
         }
-
         return await respuesta.json();
 
     } catch (error) {

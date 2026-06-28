@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
 export const loginUser = async (email, password) => {
-    
+
     // Buscar usuario
     const [rows] = await db.query(
         "SELECT * FROM tbl_users WHERE email_user = ?",
@@ -19,8 +19,6 @@ export const loginUser = async (email, password) => {
 
     // Comparar contraseña
     const ok = await bcrypt.compare(password, usuario.password_user);
-    
-    console.log(ok)
 
     if (!ok) {
         return { error: "Datos Incorrectos" };
@@ -29,7 +27,7 @@ export const loginUser = async (email, password) => {
     // Crear token temporal
     const token = jwt.sign(
         {
-            id_user: usuario.id_user,  
+            id_user: usuario.id_user,
             email_user: usuario.email_user
         },
         process.env.JWT_SECRET,
