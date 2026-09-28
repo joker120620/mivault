@@ -193,7 +193,19 @@ body {
     zoom: 1;
     width: 100%;
 }
+html, body {
+  /* Ocultar en Firefox */
+  scrollbar-width: none;
+  
+  /* Ocultar en Internet Explorer y Edge antiguo */
+  -ms-overflow-style: none;
+}
 
+/* Ocultar en Chrome, Safari, Edge moderno y Opera */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
 
 img {
     user-select: none;
