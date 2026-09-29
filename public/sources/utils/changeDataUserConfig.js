@@ -1,6 +1,6 @@
 import { mostrarMensaje } from "./modalTexto.js";
 import { fetchDataWithToken } from "./peticionServer.js";
-const URL_API = "https://mivault.tailff2832.ts.net"
+const URL_API = "http://192.168.0.106"
 //obtener email del usuario guardado
 const emailUserAguard = localStorage.getItem("user_email") || sessionStorage.getItem("user_email");
 const nameUserActual = localStorage.getItem("user_name") || sessionStorage.getItem("user_name");

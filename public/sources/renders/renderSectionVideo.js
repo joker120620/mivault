@@ -1,7 +1,7 @@
 import { fetchDataWithToken } from "../utils/peticionServer.js";
 
-const BASE_URL = "https://mivault.tailff2832.ts.net";
-const url_server = "https://mivault.tailff2832.ts.net/api/files/video";
+const BASE_URL = "http://192.168.0.106";
+const url_server = "http://192.168.0.106/api/files/video";
 
 export async function renderVideos() {
 
@@ -40,7 +40,7 @@ export async function renderVideos() {
         }
 
         card.innerHTML = `<div class="">
-        <span class="loader"  id="${"loaderVideo"+vid.id_video}" style="display: none;"></span>
+        <span class="loader"  id="${"loaderVideo" + vid.id_video}" style="display: none;"></span>
         <input disabled type="checkbox" class="checkbox-delete-file" id="${vid.id_video}" data-type="video">
         <img src="${BASE_URL + vid.thumbnail_path_video}" style="width:100%;" loading="lazy">
         <p class="title-file-dashboard">${vid.file_name_video}</p>

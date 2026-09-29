@@ -1,7 +1,7 @@
 import { fetchDataWithToken } from "./peticionServer.js";
 
 export async function mostrarCard(id, type) {
-  const URL_SERVER = `https://mivault.tailff2832.ts.net`;
+  const URL_SERVER = `http://192.168.0.106`;
   const modal = document.getElementById("modalCard");
   const contenido = document.getElementById("modalCardContent");
 
@@ -12,7 +12,7 @@ export async function mostrarCard(id, type) {
   console.log(type);
   const data = response.data[0];
   if (type == "image") {
-    document.getElementById("loaderImage"+data.id_image).style.display="none"
+    document.getElementById("loaderImage" + data.id_image).style.display = "none"
     const srcImage = URL_SERVER + data.file_path_image;
     const fecha = new Date(data.created_at_image);
     console.log("Datos para mostrar en el modal:", data, srcImage, fecha);
@@ -29,7 +29,7 @@ export async function mostrarCard(id, type) {
     <p>Fecha de Publicación: ${fecha.toLocaleString()}.</p>`;
     modal.style.display = "block";
   } else if (type == "video") {
-    document.getElementById("loaderVideo"+data.id_video).style.display="none"
+    document.getElementById("loaderVideo" + data.id_video).style.display = "none"
     const srcImage = URL_SERVER + data.file_path_video;
     const fecha = new Date(data.created_at_video);
     console.log("Datos para mostrar en el modal:", data, srcImage, fecha);

@@ -1,7 +1,7 @@
 import { fetchData, fetchDataWithToken } from "../utils/peticionServer.js";
 
-const BASE_URL = "https://mivault.tailff2832.ts.net";
-const url_server = "https://mivault.tailff2832.ts.net/api/files/public";
+const BASE_URL = "http://192.168.0.106";
+const url_server = "http://192.168.0.106/api/files/public";
 
 const INTERVALO_ACTUALIZACION = 10000;
 
@@ -17,7 +17,7 @@ export async function renderHome() {
         console.log("Archivos públicos actualizados:", data);
 
         const seccionHome = document.getElementById("contentHome");
-        document.getElementById("header-dashboard-files").innerHTML='<h2>Descubrir</h2><p>Descubre los archivos que comparten las personas con el mundo.</p>'
+        document.getElementById("header-dashboard-files").innerHTML = '<h2>Descubrir</h2><p>Descubre los archivos que comparten las personas con el mundo.</p>'
         if (!seccionHome) return;
 
         seccionHome.innerHTML = "";
@@ -37,7 +37,7 @@ export async function renderHome() {
             const card = document.createElement("div");
             card.classList.add("card-file-dashboard");
             card.innerHTML = `
-                <span class="loader"  id="${"loaderImage"+img.id_image}" style="display: none;"></span>
+                <span class="loader"  id="${"loaderImage" + img.id_image}" style="display: none;"></span>
                 <input disabled type="checkbox" class="checkbox-delete-file" id="${img.id_image}" data-type="image">
                 <img src="${BASE_URL + img.file_path_thumbnail}" alt="${img.file_name_image}" loading="lazy">
                 <p class="title-file-dashboard">${img.file_name_image}</p>
@@ -60,7 +60,7 @@ export async function renderHome() {
             const card = document.createElement("div");
             card.classList.add("card-file-dashboard");
             card.innerHTML = `
-                <span class="loader"  id="${"loaderVideo"+video.id_video}" style="display: none;">hpls</span>
+                <span class="loader"  id="${"loaderVideo" + video.id_video}" style="display: none;">hpls</span>
                 <input disabled type="checkbox" class="checkbox-delete-file" id="${video.id_video}" data-type="video">
                 <div class="container-video-modal">
                     <img src="${BASE_URL + video.thumbnail_path_video}"  loading="lazy">

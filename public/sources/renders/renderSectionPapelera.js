@@ -1,21 +1,21 @@
 import { fetchDataWithToken } from "../utils/peticionServer.js";
 
-const BASE_URL = "https://mivault.tailff2832.ts.net";
-const url_server = "https://mivault.tailff2832.ts.net/api/files/trash";
+const BASE_URL = "http://192.168.0.106";
+const url_server = "http://192.168.0.106/api/files/trash";
 
 export async function renderPapelera() {
-    try{
+    try {
         const data = await fetchDataWithToken(url_server);
         const seccionTrash = document.getElementById("contentTrash");
-        document.getElementById("header-dashboard-files-trash").innerHTML='<h2>Papelera</h2><p>Tus archivos eliminados.</p>'
-        console.log("------------------------"+data)
+        document.getElementById("header-dashboard-files-trash").innerHTML = '<h2>Papelera</h2><p>Tus archivos eliminados.</p>'
+        console.log("------------------------" + data)
         if (!seccionTrash) return;
 
         seccionTrash.innerHTML = "";
-        console.log("------------------------"+data)
+        console.log("------------------------" + data)
 
         if (!data || (!data.images.length && !data.videos.length && !data.documents.length)) {
-            console.log("------------------------"+data)
+            console.log("------------------------" + data)
             seccionTrash.innerHTML = `
                 <div class="card-file-empty">
                     <img src="https://cdn-icons-png.flaticon.com/512/5445/5445197.png" alt="imagen de archivo">
@@ -30,7 +30,7 @@ export async function renderPapelera() {
             const card = document.createElement("div");
             card.classList.add("card-file-dashboard");
             card.innerHTML = `
-                <span class="loader"  id="${"loaderImage"+img.id_image}" style="display: none;"></span>
+                <span class="loader"  id="${"loaderImage" + img.id_image}" style="display: none;"></span>
                 <input disabled type="checkbox" class="checkbox-delete-file" id="${img.id_image}" data-type="image">
                 <img src="${BASE_URL + img.file_path_thumbnail}" alt="${img.file_name_image}" loading="lazy">
                 <p class="title-file-dashboard">${img.file_name_image}</p>
@@ -53,7 +53,7 @@ export async function renderPapelera() {
             const card = document.createElement("div");
             card.classList.add("card-file-dashboard");
             card.innerHTML = `
-                <span class="loader"  id="${"loaderVideo"+video.id_video}" style="display: none;">hpls</span>
+                <span class="loader"  id="${"loaderVideo" + video.id_video}" style="display: none;">hpls</span>
                 <input disabled type="checkbox" class="checkbox-delete-file" id="${video.id_video}" data-type="video">
                 <div class="container-video-modal">
                     <img 
@@ -80,7 +80,7 @@ export async function renderPapelera() {
             `;
             seccionTrash.appendChild(card);
         });
-    }catch (error){
+    } catch (error) {
         console.error("Error al renderizar el pspelera:", error);
     }
 

@@ -1,7 +1,7 @@
 import { fetchDataWithToken } from "../utils/peticionServer.js";
 
-const BASE_URL = "https://mivault.tailff2832.ts.net";
-const url_server = "https://mivault.tailff2832.ts.net/api/files/photo";
+const BASE_URL = "http://192.168.0.106";
+const url_server = "http://192.168.0.106/api/files/photo";
 
 export async function renderPhotos() {
     const seccionFotos = document.getElementById("content-Fotos-dashboard");
@@ -13,7 +13,7 @@ export async function renderPhotos() {
     console.log("---------------------")
 
     if (!data || !data.images.length) {
-        seccionFotos.style.display="flex";
+        seccionFotos.style.display = "flex";
         seccionFotos.innerHTML = `
             <div class="card-file-empty">
                 <img src="https://cdn-icons-png.flaticon.com/512/5445/5445197.png" alt="imagen de archivo" with="150px" height="150px"> 
@@ -22,7 +22,7 @@ export async function renderPhotos() {
         `;
         return;
     }
-     seccionFotos.style.display="grid";
+    seccionFotos.style.display = "grid";
 
     data.images.forEach(img => {
         let stateImage = img.status_image
@@ -36,7 +36,7 @@ export async function renderPhotos() {
         card.classList.add("card-file-dashboard");
 
         card.innerHTML = `
-            <span class="loader"  id="${"loaderImage"+img.id_image}" style="display: none;"></span>
+            <span class="loader"  id="${"loaderImage" + img.id_image}" style="display: none;"></span>
             <input disabled type="checkbox" class="checkbox-delete-file" id="${img.id_image}" data-type="image">
             <img src="${BASE_URL + img.file_path_thumbnail}" alt="${img.file_name_image}" with="100px" height="100px">
             

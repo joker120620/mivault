@@ -14,7 +14,7 @@ function animarError(input) {
     input.classList.add("shake-horizontal");
 }
 //definir host api
-const HOST_API = "https://mivault.tailff2832.ts.net";
+const HOST_API = "http://192.168.0.106";
 const btnChangePositionSvgLogin = document.getElementById("btnChangePositionSvgLogin");
 const btnChangePositionSvgRegister = document.getElementById("btnChangePositionSvgRegister");
 
@@ -141,20 +141,20 @@ formularioLoginUsuario.addEventListener("submit", function (e) {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailLogin)) {
         mostrarMensaje("Correo inválido");
         animarError(document.getElementById("email-login"));
-        capItem("btnLogin").style.display="block"
+        capItem("btnLogin").style.display = "block"
         return;
     }
 
 
 
     async function confirmacionLogin() {
-        capItem("spining").style.display="inline-block"
-        capItem("btnLogin").style.display="none"
+        capItem("spining").style.display = "inline-block"
+        capItem("btnLogin").style.display = "none"
         const response = await fetchData(`${HOST_API}/api/login`, "POST", { email: emailLogin, password: passLogin });
         if (response.error) {
             mostrarMensaje("Datos de login incorrectos");
-            capItem("btnLogin").style.display="block"
-            capItem("spining").style.display="none"
+            capItem("btnLogin").style.display = "block"
+            capItem("spining").style.display = "none"
         } else {
             if (savesession) {
                 localStorage.setItem("token", response.token);
@@ -168,7 +168,7 @@ formularioLoginUsuario.addEventListener("submit", function (e) {
                 localStorage.removeItem("user_name", response.usuario.name_user);
                 localStorage.removeItem("token");
             }
-            capItem("spining").style.display="none"
+            capItem("spining").style.display = "none"
             window.location.href = "./sources/dashboard.html";
         }
     }
