@@ -1,7 +1,7 @@
 import { fetchDataWithToken } from "../utils/peticionServer.js";
 
-const BASE_URL = "http://192.168.0.106";
-const url_server = "http://192.168.0.106/api/files/trash";
+const BASE_URL = "https://100.106.207.113";
+const url_server = "https://100.106.207.113/api/files/trash";
 
 export async function renderPapelera() {
     try {

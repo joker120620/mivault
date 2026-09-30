@@ -1,7 +1,7 @@
 import { fetchDataWithToken } from "./peticionServer.js";
 
 export async function mostrarCard(id, type) {
-  const URL_SERVER = `http://192.168.0.106`;
+  const URL_SERVER = `https://100.106.207.113`;
   const modal = document.getElementById("modalCard");
   const contenido = document.getElementById("modalCardContent");
 

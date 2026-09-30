@@ -1,7 +1,7 @@
 import { fetchData, fetchDataWithToken } from "../utils/peticionServer.js";
 
-const BASE_URL = "http://192.168.0.106";
-const url_server = "http://192.168.0.106/api/files/public";
+const BASE_URL = "https://100.106.207.113";
+const url_server = "https://100.106.207.113/api/files/public";
 
 const INTERVALO_ACTUALIZACION = 10000;
 
