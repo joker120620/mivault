@@ -1,6 +1,6 @@
 import { mostrarMensaje } from "./modalTexto.js";
 import { fetchDataWithToken } from "./peticionServer.js";
-const URL_API = "https://100.106.207.113"
+const URL_API = "http://192.168.0.113:3000"
 
 export function UploadFile(type) {
     const modal = document.getElementById('modalCard');

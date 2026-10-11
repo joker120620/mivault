@@ -14,7 +14,7 @@ function animarError(input) {
     input.classList.add("shake-horizontal");
 }
 //definir host api
-const HOST_API = "https://100.106.207.113";
+const HOST_API = "http://192.168.0.113:3000";
 const btnChangePositionSvgLogin = document.getElementById("btnChangePositionSvgLogin");
 const btnChangePositionSvgRegister = document.getElementById("btnChangePositionSvgRegister");
 
