@@ -15,7 +15,7 @@ function animarError(input) {
 }
 //definir host api
 const HOST_API = "https://100.106.207.113";
-const btnChangePositionSvgLogin = docuemnt.getElementById("btnChangePositionSvgLogin");
+const btnChangePositionSvgLogin = document.getElementById("btnChangePositionSvgLogin");
 const btnChangePositionSvgRegister = document.getElementById("btnChangePositionSvgRegister");
 
 btnChangePositionSvgLogin.addEventListener("click", () => {
