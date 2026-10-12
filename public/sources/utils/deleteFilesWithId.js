@@ -1,6 +1,6 @@
 import { mostrarMensaje } from "./modalTexto.js";
 import { fetchDataWithToken } from "./peticionServer.js";
-const URL_API = "http://192.168.0.113:3000"
+const URL_API = "http://localhost:3000"
 
 export async function deleteFilesWithIds(ids, type) {
     if (ids && type) {
