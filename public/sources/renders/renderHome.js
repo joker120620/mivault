@@ -1,7 +1,7 @@
 import { fetchData, fetchDataWithToken } from "../utils/peticionServer.js";
 
-const BASE_URL = "http://localhost:3000";
-const url_server = "http://localhost:3000/api/files/public";
+const BASE_URL = "https://mi-vault.tailff2832.ts.net";
+const url_server = "https://mi-vault.tailff2832.ts.net/api/files/public";
 
 const INTERVALO_ACTUALIZACION = 10000;
 

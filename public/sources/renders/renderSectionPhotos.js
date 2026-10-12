@@ -1,7 +1,7 @@
 import { fetchDataWithToken } from "../utils/peticionServer.js";
 
-const BASE_URL = "http://localhost:3000";
-const url_server = "http://localhost:3000/api/files/photo";
+const BASE_URL = "http://https://mi-vault.tailff2832.ts.net";
+const url_server = "http://https://mi-vault.tailff2832.ts.net/api/files/photo";
 
 export async function renderPhotos() {
     const seccionFotos = document.getElementById("content-Fotos-dashboard");
