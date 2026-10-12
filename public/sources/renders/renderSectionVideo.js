@@ -1,7 +1,7 @@
 import { fetchDataWithToken } from "../utils/peticionServer.js";
 
-const BASE_URL = "http://https://mi-vault.tailff2832.ts.net";
-const url_server = "http://https://mi-vault.tailff2832.ts.net/api/files/video";
+const BASE_URL = "https://mi-vault.tailff2832.ts.net";
+const url_server = "https://mi-vault.tailff2832.ts.net/api/files/video";
 
 export async function renderVideos() {
 

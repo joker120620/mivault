@@ -14,7 +14,7 @@ function animarError(input) {
     input.classList.add("shake-horizontal");
 }
 //definir host api
-const HOST_API = "http://https://mi-vault.tailff2832.ts.net";
+const HOST_API = "https://mi-vault.tailff2832.ts.net";
 const btnChangePositionSvgLogin = document.getElementById("btnChangePositionSvgLogin");
 const btnChangePositionSvgRegister = document.getElementById("btnChangePositionSvgRegister");
 
