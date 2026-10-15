@@ -1,18 +1,19 @@
 import { fetchDataWithToken } from "./peticionServer.js";
 
 export async function mostrarCard(id, type) {
-  const URL_SERVER = `https://mi-vault.tailff2832.ts.net`;
+  const URL_SERVER = `http://192.168.0.112:3000`;
   const modal = document.getElementById("modalCard");
   const contenido = document.getElementById("modalCardContent");
 
   const response = await fetchDataWithToken(
     `${URL_SERVER}/api/files/getcard/card${id}?type=${type}`,
-    "POST"
+    "POST",
   );
   console.log(type);
   const data = response.data[0];
   if (type == "image") {
-    document.getElementById("loaderImage" + data.id_image).style.display = "none"
+    document.getElementById("loaderImage" + data.id_image).style.display =
+      "none";
     const srcImage = URL_SERVER + data.file_path_image;
     const fecha = new Date(data.created_at_image);
     console.log("Datos para mostrar en el modal:", data, srcImage, fecha);
@@ -29,7 +30,8 @@ export async function mostrarCard(id, type) {
     <p>Fecha de Publicación: ${fecha.toLocaleString()}.</p>`;
     modal.style.display = "block";
   } else if (type == "video") {
-    document.getElementById("loaderVideo" + data.id_video).style.display = "none"
+    document.getElementById("loaderVideo" + data.id_video).style.display =
+      "none";
     const srcImage = URL_SERVER + data.file_path_video;
     const fecha = new Date(data.created_at_video);
     console.log("Datos para mostrar en el modal:", data, srcImage, fecha);
@@ -74,19 +76,19 @@ export async function mostrarCard(id, type) {
   // cerrar al presionar la X
   document.getElementById("modalCardCerrar").onclick = () => {
     modal.style.display = "none";
-    cerrarVideoPlayer()
+    cerrarVideoPlayer();
   };
 
   // cerrar al hacer click fuera del modal
   window.onclick = (e) => {
     if (e.target === modal) modal.style.display = "none";
-    cerrarVideoPlayer()
+    cerrarVideoPlayer();
   };
 }
 function cerrarVideoPlayer() {
   const video = document.getElementById("video-dinamic");
   if (video) {
     video.pause(); // Pausa el video
-    video.removeAttribute('src'); // Opcional: descarga el video de la memoria
+    video.removeAttribute("src"); // Opcional: descarga el video de la memoria
   }
 }

@@ -129,6 +129,10 @@
   animation: animloader 1s linear infinite alternate;
 }
 
+@keyframes slide {
+  0%, 20% { transform: translateX(20px); } /* El recorrido máximo ahora es 20px (15px de base + 20px = 35px en total) */
+  80%, 100% { transform: translateX(-1px); }
+}
 @keyframes animloader {
   0% {
     box-shadow: -38px -12px ,  -14px 0,  14px 0, 38px 0;
@@ -147,6 +151,39 @@
 * {
     box-sizing: border-box;
     
+}
+/*
+barra de progreso*/
+.upload-container {
+  width: 100%;
+  max-width: 400px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.upload-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+}
+
+/* La pista de fondo */
+.progress-track {
+  width: 100%;
+  height: 12px;
+  background-color: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* La barra de progreso animada */
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--morado) 0%, var(--morado-hover) 100%);
+  border-radius: 10px;
+  /* La transición hace que el avance se vea suave y no de golpe */
+  transition: width 0.4s ease; 
 }
 :root {
     --morado-oscuro: #3b0764;
@@ -461,8 +498,12 @@ li a {
     color: var(--morado-oscuro);
     font-weight: 500;
 }
-
 .container-nav {
+        display: contents;
+       
+    }
+
+.container-nav-left-left {
     width: 100%;
     display: flex;
     align-items: center;
@@ -510,6 +551,12 @@ li a {
     background: none;
     border: none;
     cursor: pointer;
+    width: fit-content;
+    
+}
+.btn-perfil-nav svg {
+    width: 35px;
+    border:none;
 }
 
 /* nav lateral */
@@ -595,7 +642,7 @@ main {
 .header-dashboard-files {
     display: flex;
     flex-direction: column;
-    padding: 40px;
+    padding: 10px 40px 10px 40px;
     animation: slideDown 0.5s ease;
 }
 
@@ -830,11 +877,18 @@ main {
 .btn-menu-header-mobile {
     display: none;
 }
-
+.container-busqueda {
+        width: 100%;
+        /* CORREGIDO: 100% en lugar de 100vw */
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+    }
 
 /* responsive grid */
 /* Tablets ≤ 768px */
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
     body {
         width: 100%;
         /* CORREGIDO: Tenías 1vh. 100% adapta el body al ancho real */
@@ -846,34 +900,90 @@ main {
     }
 
     nav {
-        top: 0;
         width: 100%;
-        /* CORREGIDO: 100% en lugar de 100vw para evitar scroll horizontal */
-        padding-left: 20px;
+        padding: 15px;
+        padding-bottom: 5px;
+        /* Cambiado: el padding parejo evita que se descuadre */
         display: flex;
-        /* CORREGIDO: Tenías "block", pero usabas "flex-direction" */
         flex-direction: column;
-        height: fit-content;
         position: relative;
-        justify-content: center;
+        height: fit-content;
         gap: 0;
     }
-
-    .container-nav {
+    .container-nav{
         display: flex;
-        /* CORREGIDO: Faltaba activar flex para usar flex-direction */
-        flex-direction: column;
-        align-items: flex-start;
         width: 100%;
-        /* CORREGIDO: 100% en lugar de 100vw */
+        flex-direction: row;
+        gap: 0px;
+        padding-bottom: 5px;
+        margin:0;
+        justify-content: space-between;
     }
+
+    .container-nav-left {
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        padding-bottom: 5px;
+    }
+    .btn-menu-header-mobile {
+        display: flex;
+        background: none;
+        border: none;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+        animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    }
+    .container-btn-menu-mobile{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .loader-menu-nav-mobile {
+        width: 30px;      /* Reducido de 40px */
+        height: 12px;     /* Reducido de 35px */
+        position: relative;
+        border-bottom: 2px solid var(--morado-oscuro); /* Borde reducido de 5px */
+        border-top: 2px solid var(--morado-oscuro);    /* Borde reducido de 5px */
+        box-sizing: border-box;
+    }      
+
+    .loader-menu-nav-mobile:before, 
+    .loader-menu-nav-mobile:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: -8px;       /* Reducido de -20px */
+        width: 10px;     /* Reducido de 32px */
+        height: 10px;    /* Reducido de 32px */
+        border-radius: 50%;
+        background: var(--morado);
+        border: 2px solid var(--morado); /* Borde reducido de 5px */
+        box-sizing: border-box;
+        animation: slide 1s infinite ease-in-out alternate;
+    }
+
+    .loader-menu-nav-mobile:after {
+    top: 8px;        /* Reducido de 20px */
+    animation-direction: alternate-reverse;
+    }   
+
 
 
     .container-info-user-nav {
         display: flex;
         /* CORREGIDO: Faltaba flex para que funcione justify-content */
-        width: 100%;
-        justify-content: space-between;
+        width: fit-content;
+        gap: 10px;  
+    }
+    .container-btn-menu-mobile{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        width: 10vh;
     }
 
     .container-menu-options {
@@ -935,14 +1045,7 @@ main {
         /* Evita que la imagen se estire feo */
     }
 
-    .container-busqueda {
-        width: 100%;
-        /* CORREGIDO: 100% en lugar de 100vw */
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        justify-content: space-between;
-    }
+    
 
     .container-busqueda svg {
         cursor: pointer;
@@ -962,6 +1065,10 @@ main {
         -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
         animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
     }
+    .btn-perfil-nav svg {
+    width: 35px;
+    border:none;
+}
 }
 
 
@@ -996,10 +1103,6 @@ main {
   animation-direction: alternate-reverse;
 }
 
-@keyframes slide {
-  0%, 20% { transform: translateX(20px); } /* El recorrido máximo ahora es 20px (15px de base + 20px = 35px en total) */
-  80%, 100% { transform: translateX(-1px); }
-}
   
     nav {
         width: 100%;
@@ -1014,16 +1117,29 @@ main {
     }
 
     .container-nav {
+        display: contents;
+       
+    }
+    .container-nav-left {
         display: flex;
-        flex-direction: column;
-        width: 100%;
+        flex-direction: row;
         gap: 0px;
-        /* Añade separación entre el buscador y el usuario */
         padding-bottom: 5px;
+        width: 100%;
     }
 
-    .container-nav div {
+    
+    
+    .container-busqueda {
+        padding: 5px 10px;
+    }
+
+    .container-busqueda input {
         width: 100%;
+        /* Hace que el input respete el ancho de su caja */
+        border: solid var(--morado-claro);
+        /* Quita el borde doble si el div ya tiene uno */
+        outline: none;
     }
 
     .container-info-user-nav {
@@ -1036,20 +1152,7 @@ main {
         /* Separación interna para que el texto no pegue al borde */
     }
 
-    .container-busqueda {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        padding: 5px 10px;
-    }
-
-    .container-busqueda input {
-        width: 100%;
-        /* Hace que el input respete el ancho de su caja */
-        border: solid var(--morado-claro);
-        /* Quita el borde doble si el div ya tiene uno */
-        outline: none;
-    }
+    
 
     .container-content-dashboard {
         border: none;
