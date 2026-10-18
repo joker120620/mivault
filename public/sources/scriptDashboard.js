@@ -6,6 +6,7 @@ import { changeDataUser } from "./utils/changeDataUserConfig.js"
 import { mostrarCard } from "./utils/modalShowCard.js";
 import { deleteFilesWithIds } from "./utils/deleteFilesWithId.js";
 import { renderHome, initPollingHome, stopPollingHome } from "./renders/renderHome.js";
+import { renderSearch } from "./renders/renderSearch.js";
 import { renderPhotos } from "./renders/renderSectionPhotos.js"
 import { renderVideos } from "./renders/renderSectionVideo.js";
 import { renderPapelera } from "./renders/renderSectionPapelera.js"
@@ -296,4 +297,14 @@ document.getElementById("btnCancelDeleteVideo").addEventListener("click", async 
 });
 document.addEventListener("contextmenu", function (e) {
   e.preventDefault();
+});
+
+//funcion para cargar una busqueda de archivos en el dashboard
+capturarItem("btnSearchDashboard").addEventListener("click", async () => {
+  mostrarSeccion("sectionSearchDashboard");
+  console.log("busqueda dashboard");
+  let pageSearch = 1; // Reiniciar la página de búsqueda al iniciar una nueva búsqueda
+  const inputSearch = capturarItem("inputSearchDashboard");
+  const query = inputSearch.value.trim();   
+  renderSearch(query , pageSearch);
 });

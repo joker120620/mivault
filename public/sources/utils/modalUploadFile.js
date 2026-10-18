@@ -125,20 +125,21 @@ export function UploadFile(type) {
     const progressFill = document.getElementById("progress-fill");
     document.getElementById("uploadContainer").style.display = "block"; // Mostrar la barra de progreso mientras se realiza la subida
     document.getElementById("uploadBtn").dataset.disabled = true; // Deshabilitar el botón de subir mientras se realiza la subida
-    document.getElementById("selectFileBtn").dataset.disabled = true; // Deshabilitar el botón de seleccionar mientras se realiza la subida  
+    document.getElementById("selectFileBtn").dataset.disabled = true; // Deshabilitar el botón de seleccionar mientras se realiza la subida
     document.getElementById("uploadBtn").style.display = "none"; // Ocultar el botón de subir mientras se realiza la subida
-    
+
     function addProgressMediaBarra() {
-        //simular un progreso suave hasta el 90%
-        let progress = 10;
-        const interval = setInterval(() => {
-          progress += 10;
-          progressFill.style.width = `${progress}%`;
-          document.getElementById("uploadLabel").textContent = `Subiendo archivo... ${progress}%`; 
-          if (progress >= 90) {
-            clearInterval(interval);
-          }
-        }, 500);
+      //simular un progreso suave hasta el 90%
+      let progress = 10;
+      const interval = setInterval(() => {
+        progress += 10;
+        progressFill.style.width = `${progress}%`;
+        document.getElementById("uploadLabel").textContent =
+          `Subiendo archivo... ${progress}%`;
+        if (progress >= 90) {
+          clearInterval(interval);
+        }
+      }, 500);
     }
     addProgressMediaBarra();
     const response = await fetchDataWithToken(
@@ -147,7 +148,7 @@ export function UploadFile(type) {
       formData,
       true,
     );
-    
+
     if (response) {
       progressFill.style.width = "100%"; // Completar la barra de progreso
       setTimeout(() => {

@@ -5,6 +5,7 @@ import multer from "multer";
 import { addNewUser } from "../controllers/controllerRegisterUser.js";
 import { loginUser } from "../controllers/controllerLoginUser.js";
 import { auth } from "../controllers/controllerAuthToken.js";
+import { searchFilesInBd } from "../controllers/controllerSearchFiles.js";
 import { getFilesPublic } from "../controllers/controllerGetFilesPublic.js";
 import { getFilesId } from "../controllers/controllerGetFileId.js";
 import { getPhotoPrivate } from "../controllers/controllerGetPrivatePhoto.js"
@@ -84,6 +85,12 @@ router.post("/api/perfil/update", auth, async (req, res) => {
 router.get("/api/files/public", async (req, res) => {
     let data = await getFilesPublic()
     res.json(data)
+});
+//buscar archivos por query
+router.get("/api/search", auth, async (req, res) => {
+    const { q, page } = req.query;
+    const data = await searchFilesInBd(q, page);
+    res.json(data);
 });
 
 //mostrar fotos privadas
